@@ -23,7 +23,7 @@ gem "jbuilder"
 # gem "kredis"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -36,6 +36,9 @@ gem "bootsnap", require: false
 
 gem "bootstrap"
 gem "jquery-rails"
+gem "devise"
+gem "sassc-rails"
+gem "dotenv-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -46,6 +49,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "factory_bot_rails"
+  gem "capybara"
 end
 
 group :development do
@@ -53,4 +59,10 @@ group :development do
   gem "web-console"
   gem "better_errors"
   gem "binding_of_caller"
+end
+
+group :test do
+  gem "rspec-rails"
+  gem "webdrivers"
+  gem "launchy"
 end
