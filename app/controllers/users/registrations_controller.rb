@@ -10,10 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    flash[:success] = "アカウント承認用のメールを送信しました。確認してください。"
-  end
+  # def create
+  # super
+  # end
 
   # GET /resource/edit
   # def edit
