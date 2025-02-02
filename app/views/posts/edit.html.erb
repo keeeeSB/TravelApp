@@ -1,0 +1,29 @@
+<h2 class="text-center mb-3">記録の編集</h2>
+
+<%= form_with(model: @post, url: user_post_path(current_user, @post), local: true) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @post %>
+
+  <div class="mb-3">
+    <%= f.label :title, "タイトル", class: "form-label" %>
+    <%= f.text_field :title, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :body, "内容", class: "form-label" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :location, "旅先", class: "form-label" %>
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :image, "写真", class: "form-label" %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="text-center mb-3">
+    <%= f.submit "更新", class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

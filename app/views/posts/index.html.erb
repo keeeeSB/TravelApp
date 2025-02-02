@@ -1,0 +1,17 @@
+<h2 class="text-center mb-4">旅の記録一覧</h2>
+
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <%= link to user_post_path(current_user, post) do %>
+      <div class="card" style="width: 18rem;">
+        <%= image_tag post.image, class: "card-img-top", alt: "カードイメージ" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+          <p class="card-text"><%= post.body %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p class="text-center">旅の記録がありません。寂しいですね〜。</p>
+<% end %>
