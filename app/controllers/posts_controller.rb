@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "旅の記録を作成しました。"
-      redirect_to user_diaries_path(current_user)
+      redirect_to user_posts_path(current_user)
     else
       flash.now[:danger] = "記録を作成できませんでした。"
       render :new, status: :unprocessable_entity
