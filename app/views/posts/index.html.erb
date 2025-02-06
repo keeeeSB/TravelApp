@@ -2,19 +2,7 @@
 
 <% if @posts.present? %>
   <% @posts.each do |post| %>
-    <%= link_to user_post_path(current_user, post) do %>
-      <div class="card" style="width: 18rem;">
-        <% if post.image.present? %>
-          <%= image_tag post.image, class: "card-img-top", alt: "カードイメージ" %>
-        <% else %>
-          <%= image_tag "thumbnail.jpg", class: "care-img-top", alt: "サンプルイメージ" %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= post.title %></h5>
-          <p class="card-text"><%= post.body %></p>
-        </div>
-      </div>
-    <% end %>
+    <%= render "post_card", post: post %>
   <% end %>
 <% else %>
   <p class="text-center">旅の記録がありません。寂しいですね〜。</p>
