@@ -1,13 +1,21 @@
-<div class="card">
-  <%= image_tag @post.image, class: "card-img-top", alt: "カードイメージ" %>
-  <div class="card-body">
-    <h5 class="card-title"><%= @post.title %></h5>
-    <p class="card-text"><%= @post.body %></p>
+<div class="custom-post-card">
+  <% if @post.image.present? %>
+    <%= image_tag @post.image, class: "post-image", alt: "カードイメージ" %>
+  <% else %>
+    <%= image_tag "thumbnail.jpg", class: "post-image", alt: "サンプルイメージ" %>
+  <% end %>
+
+  <div class="post-content">
+    <h2 class="post-title"><%= @post.title %></h2>
+    <p class="post-text"><%= formatted_post_body(@post) %></p>
   </div>
 
-  <div class="d-flex justify-content-end mt-4">
-    <%= link_to "編集", edit_user_post_path(current_user, @post), class: "btn btn-outline-warning me-2" %>
-    <%= link_to "削除", user_event_path(current_user, @ppost), class: "btn btn-outline-danger",
-                    data: { turbo-method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+  <div class="post-footer">
+    <small class="post-date">投稿日時: <%= formatted_post_date(@post) %></small>
+    <div class="post-actions">
+      <%= link_to "編集", edit_user_post_path(current_user, @post), class: "btn btn-edit" %>
+      <%= link_to "削除", user_post_path(current_user, @post), class: "btn btn-delete",
+                      data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
+    </div>
   </div>
 </div>
