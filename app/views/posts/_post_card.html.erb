@@ -1,0 +1,13 @@
+<%= link_to user_post_path(current_user, post), class: "custom-card-link" do %>
+  <div class="card custom-card">
+    <% if post.image.present? %>
+      <%= image_tag post.image, class: "card-img-top", alt: "カードイメージ" %>
+    <% else %>
+      <%= image_tag "thumbnail.jpg", class: "card-img-top", alt: "サンプルイメージ" %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= truncate(post.title, length: 30) %></h5>
+      <p class="card-text text-muted"><%= truncate(post.body, length: 60) %></p>
+    </div>
+  </div>
+<% end %>

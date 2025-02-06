@@ -1,0 +1,9 @@
+<h2 class="text-center mb-4">旅の記録一覧</h2>
+
+<% if @posts.present? %>
+  <% @posts.each do |post| %>
+    <%= render "post_card", post: post %>
+  <% end %>
+<% else %>
+  <p class="text-center">旅の記録がありません。寂しいですね〜。</p>
+<% end %>
