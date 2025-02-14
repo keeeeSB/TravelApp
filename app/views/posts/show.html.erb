@@ -13,6 +13,17 @@
   <div class="post-footer">
     <small class="post-date">投稿日時: <%= formatted_post_date(@post) %></small>
     <div class="post-actions">
+      <% if current_user.liked_post?(@post) %>
+        <%= button_to user_post_like_path(current_user, @post, current_user.likes.find_by(post: @post)),
+                      method: :delete do %>
+          <%= image_tag "hand-thumbs-up-fill.svg", alt: "いいねを解除" %>
+        <% end %>
+      <% else %>
+        <%= button_to user_post_likes_path(current_user, @post),
+                      data: { turbo_method: :post } do %>
+          <%= image_tag "hand-thumbs-up.svg", alt: "いいね" %>
+        <% end %>
+      <% end %>
       <%= link_to "編集", edit_user_post_path(current_user, @post), class: "btn btn-edit" %>
       <%= link_to "削除", user_post_path(current_user, @post), class: "btn btn-delete",
                       data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
