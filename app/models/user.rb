@@ -15,4 +15,8 @@ class User < ApplicationRecord
                        format: { with: VALID_EMAIL_REGEX },
                        uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
+
+  def liked_post?(post)
+    liked_posts.include?(post)
+  end
 end

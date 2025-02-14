@@ -8,14 +8,14 @@ class LikesController < ApplicationController
     else
       flash[:danger] = "いいねをできませんでした。"
     end
-    redirect_to user_posts_path(current_user)
+    redirect_to user_post_path(current_user, @post)
   end
 
   def destroy
-    like = curren_user.likes.find_by(post: @post)
+    like = current_user.likes.find_by(post: @post)
     like.destroy!
     flash[:success] = "いいねを取り消しました。"
-    redirect_to user_posts_path(current_user)
+    redirect_to user_post_path(current_user, @post)
   end
 
   private
